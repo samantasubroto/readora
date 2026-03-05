@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- ============================= -->
+    <!-- Services -->
+    <!-- ============================= -->
+
+    <bean id="readorastoreService"
+          class="com.readora.store.service.impl.DefaultReadorastoreService">
+        <property name="modelService" ref="modelService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+
+    <!-- ============================= -->
+    <!-- Data Import Services -->
+    <!-- ============================= -->
+
+    <bean id="readoraCoreDataImportService"
+          class="com.readora.store.service.dataimport.impl.ReadoraCoreDataImportService"
+          parent="coreDataImportService"/>
+
+    <bean id="readoraSampleDataImportService"
+          class="com.readora.store.service.dataimport.impl.ReadoraSampleDataImportService"
+          parent="sampleDataImportService"/>
+
+
+    <!-- ============================= -->
+    <!-- System Setup -->
+    <!-- ============================= -->
+
+    <bean id="readorastoreSystemSetup"
+          class="com.readora.store.service.impl.ReadorastoreSystemSetup"
+          parent="abstractCoreSystemSetup">
+        <property name="coreDataImportService" ref="readoraCoreDataImportService"/>
+        <property name="readoraSampleDataImportService" ref="readoraSampleDataImportService"/>
+    </bean>
+
+
+    <!-- ================================== -->
+    <!-- Category Code Value Providers -->
+    <!-- ================================== -->
+
+    <bean id="readoraCategoryCodeValueProvider"
+          parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="readoraCategorySource"/>
+    </bean>
+
+    <bean id="readoraBrandCategoryCodeValueProvider"
+          parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="readoraBrandCategorySource"/>
+    </bean>
+
+    <bean id="readoraVariantCategoryCodeValueProvider"
+          parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="readoraVariantCategorySource"/>
+    </bean>
+
+
+    <!-- ================================== -->
+    <!-- Category Name Value Providers -->
+    <!-- ================================== -->
+
+    <bean id="readoraCategoryNameValueProvider"
+          parent="abstractCategoryNameValueProvider">
+        <property name="categorySource" ref="readoraCategorySource"/>
+    </bean>
+
+    <bean id="readoraBrandCategoryNameValueProvider"
+          parent="abstractCategoryNameValueProvider">
+        <property name="categorySource" ref="readoraBrandCategorySource"/>
+    </bean>
+
+
+    <!-- ============================= -->
+    <!-- Category Sources -->
+    <!-- ============================= -->
+
+    <!-- Books root category -->
+    <bean id="readoraCategorySource" parent="defaultCategorySource">
+        <property name="rootCategory" value="books"/>
+    </bean>
+
+    <!-- Variant categories -->
+    <bean id="readoraVariantCategorySource" parent="variantCategorySource"/>
+
+    <!-- Brand hierarchy root -->
+    <bean id="readoraBrandCategorySource" parent="defaultCategorySource">
+        <property name="rootCategory" value="brands"/>
+    </bean>
+
+</beans>

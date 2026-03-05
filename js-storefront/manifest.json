@@ -1,0 +1,13 @@
+{
+  "applications": [
+    {
+      "name": "readora",
+      "path": "readora",
+      "csr": {
+        "webroot": "dist/readora/browser"
+      },
+      "enabledRepositories": ["spartacus-6"]
+    }
+  ],
+  "nodeVersion": "22"
+}

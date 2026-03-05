@@ -1,0 +1,145 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+##******************************This file is generated - please do not edit it. It will be regenerated after every build.********************************#
+
+$contentCatalog=readoraContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture=media(code, $contentCV);
+$siteResource=jar:com.readora.readorastore.constants.ReadorastoreConstants&/readorastore/import/sampledata/contentCatalogs/$contentCatalog
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV)[lang=$lang];
+
+
+# Language
+$lang=en
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+                            ;;SiteLogoComponent;/images/theme/logo_hybris_b2b_responsive.svg
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+                       ;;AboutSAPCommerceLink;"About SAP Commerce Cloud"
+                       ;;AddressBookLink;"Address Book"
+                       ;;AgileCommerceBlogLink;"Agile Commerce Blog"
+                       ;;ContactUsLink;"Contact Us"
+                       ;;DocumentationLink;"Documentation"
+                       ;;FAQLink;"Frequently Asked Questions"
+                       ;;FacebookLink;"Facebook"
+                       ;;FootwearMensCategoryLink;"Men's"
+                       ;;FootwearWomensCategoryLink;"Women's"
+                       ;;HomepageNavLink;"Home"
+                       ;;LinkedInLink;"Linked In"
+                       ;;OrderHistoryLink;"Order History"
+                       ;;QuickOrderLink;"Quick Order"
+                       ;;PaymentDetailsLink;"Payment Details"
+                       ;;PersonalDetailsLink;"Personal Details"
+                       ;;SafetyCategoryLink;"Safety"
+                       ;;TwitterLink;"Twitter"
+                       ;;UpdateEmailLink;"Email Address"
+                       ;;UpdatePasswordLink;"Password"
+                       ;;VisitSAPLink;"Visit SAP"
+                       ;;CartLink;"Cart"
+                       ;;HelpLink;"Help"
+                       ;;OrdersLink;"Orders"
+                       ;;SignOutLink;"Sign Out"
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=en]
+                       ;;AngleGrindersCategoryLink;"Angle Grinders"
+                       ;;HandSawsCategoryLink;"Hand Saws"
+                       ;;HandToolsCategoryLink;"Hand Tools"
+                       ;;JigsawsCategoryLink;"Jigsaws"
+                       ;;MeasuringLayoutToolsCategoryLink;"Measuring & Layout Tools"
+                       ;;NutDriversCategoryLink;"Nut Drivers"
+                       ;;PowerDrillsCategoryLink;"Power Drills"
+                       ;;PunchesCategoryLink;"Punches"
+                       ;;RotaryHammersCategoryLink;"Rotary Hammers"
+                       ;;SandersCategoryLink;"Sanders"
+                       ;;ScrewdriversCategoryLink;"Screwdrivers"
+                       ;;StrippingToolsCategoryLink;"Stripping Tools"
+
+# CMS Mini Cart Component
+UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=$lang]
+                        ;;MiniCart;Mini Cart;"YOUR SHOPPING CART"
+
+# CMS tabs components
+UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+                               ;;deliveryTab;Delivery;"<div class=""tab-delivery"">Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere. Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</div>"
+
+# CMS Footer Component
+UPDATE FooterNavigationComponent;$contentCV[unique=true];uid[unique=true];notice[lang=en][translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator,dateFormat=yyyy]
+                                ;;FooterNavigationComponent;"Copyright © {0} SAP SE or an SAP affiliate company. All rights reserved."
+
+# CMS ProductReferences Components
+UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+                                 ;;Similar;"You may also like..."
+                                 ;;accessories;"Accessories"
+
+# CMS PurchasedCategorySuggestion Components
+UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS CartSuggestion Components
+UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+                              ;;CartSuggestions;"You may also like..."
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+                        ;;FollowUsNavNode;"Follow Us"
+                        ;;MyAccountNavNode;"My Account"
+                        ;;ReadoraNavNode;"Readora Site"
+                        ;;SAPCommerceNavNode;"SAP Commerce Cloud"
+                        ;;SAPCustomerExperienceNavNode;"SAP Customer Experience"
+                        ;;SiteRootNode;"SiteRoot"
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=en]
+                        ;;AngleGrindersNavNode;"Angle Grinders"
+                        ;;FootwearLinksNavNode;"Footwear"
+                        ;;HandToolsLinksNavNode;"Hand Tools"
+                        ;;HandToolsNavNode;"Hand Tools"
+                        ;;MeasuringLayoutToolsNavNode;"Measuring & Layout Tools"
+                        ;;PowerDrillsNavNode;"Power Drills"
+                        ;;SafetyNavNode;"Safety"
+                        ;;SandersNavNode;"Sanders"
+                        ;;ScrewdriversNavNode;"Screwdrivers"
+
+# Readora FAQ Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+                            ;;faqMenuParagraph;"<div class=""nav_column"">	<div class=""title_holder"">		<div class=""title"">			<div class=""title-top"">				<span></span>			</div>		</div>		<h2>Frequently asked questions</h2>	</div>	<div class=""item"">		<ul class=""facet_block indent"">			<li><a href=""#a00"">Returns and refunds</a></li>			<li><a href=""#b00"">Delivery information</a></li>			<li><a href=""#c00"">Registration</a></li>			<li><a href=""#d00"">Your online account</a></li>			<li><a href=""#e00"">Orders</a></li>			<li><a href=""#f00"">Promotions and discounts</a></li>			<li><a href=""#g00"">Product and general Informations</a></li>			<li><a href=""#h00"">Store information</a></li>			<li><a href=""#i00"">Business contacts</a></li>			<li><a href=""#j00"">Buying guides</a></li>			<li><a href=""#k00"">Size guides</a></li>			<li><a href=""#l00"">Privacy and security</a></li>		</ul>	</div></div>";
+                            ;;faqTextParagraph;"<div class=""global-alerts""><div class=""alert alert-info"" role=""alert""><strong>Information:</strong> Page Under Construction - Not Completely Functional</div></div><a name=""00""></a><div class=""textpage textpage-faqs"">content</div>";
+
+# Readora Terms and Conditions Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+                            ;;termsAndConditionsMenuParagraph;"<div class=""nav_column"">	<h2>Terms and Conditions</h2></div>";
+                            ;;termsAndConditionsTextParagraph;"<a name=""00""></a><div class=""textpage textpage-termsAndConditions"">content</div>";
+
+# Readora Homepage
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+                            ;;EmptyCartParagraphComponent;"<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
+                            ;;NoSearchResultsParagraphComponent;"<h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul>"
+                            ;;HelpParagraphComponent;"<strong>Need Help with your checkout process?</strong> <span>Contact Us or Call phone number.</span>"
+
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/svg+xml'];$contentCV[unique=true];folder(qualifier)[default=images]
+                   ;widescreen;Readora_1400x401_ErrorPage_EN_1400W.svg;$siteResource/images/banners/site/Readora_1400x401_ErrorPage_EN_1400W.svg;Readora_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;mobile;Readora_480x170_ErrorPage_EN_480W.svg;$siteResource/images/banners/site/Readora_1400x401_ErrorPage_EN_1400W.svg;Readora_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;tablet;Readora_770x221_ErrorPage_EN_770W.svg;$siteResource/images/banners/site/Readora_1400x401_ErrorPage_EN_1400W.svg;Readora_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+                   ;desktop;Readora_960x275_ErrorPage_EN_960W.svg;$siteResource/images/banners/site/Readora_1400x401_ErrorPage_EN_1400W.svg;Readora_1400x401_ErrorPage_EN_1400W.svg;"Page not found";
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+                            ;readora-errorpage-pagenotfound-en;Readora_480x170_ErrorPage_EN_480W.svg,Readora_770x221_ErrorPage_EN_770W.svg,Readora_960x275_ErrorPage_EN_960W.svg,Readora_1400x401_ErrorPage_EN_1400W.svg
+
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$mediaContainer
+                                             ;;ReadoraErrorpageBannerComponent;Readora Error Page Banner Component;ReadoraErrorpageBannerComponent;readora-errorpage-pagenotfound-en
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=en]
+                       ;;RegisterLink;"Register"

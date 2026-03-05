@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "./support/readorabackofficewidget-variables.scss";
+
+.yw-labelstyle
+{
+	color: $readorabackoffice-label-text-color;
+}
+
+.readorabackoffice-container {
+	background: $readorabackoffice-container-background;
+	font-family: $readorabackoffice-container-font-family;
+	font-size: $readorabackoffice-container-font-size;
+}

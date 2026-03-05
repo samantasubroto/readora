@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+    <extension abstractclassprefix="Generated" classprefix="Readorastore" jaloLogicFree="true" managername="ReadorastoreManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="readorastore" usemaven="false">
+
+        <requires-extension name="b2bacceleratorservices"/>
+        <requires-extension name="readoracore"/>
+        
+        <coremodule generated="true" manager="com.readora.store.jalo.ReadorastoreManager" packageroot="com.readora.store"/>
+    </extension>
+</extensioninfo>

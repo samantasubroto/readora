@@ -1,0 +1,14 @@
+#
+# Import the Product Catalog and Classification Catalog
+#
+# Localization en
+#
+
+$lang=en
+
+$productCatalog=readoraProductCatalog
+$classificationCatalog=ReadoraClassification
+
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+              ;$classificationCatalog;"Readora Classification";
+              ;$productCatalog;"Readora Product Catalog";
