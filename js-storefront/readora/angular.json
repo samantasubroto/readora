@@ -3,18 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "readora": {
+    "jakes": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
+          "style": "scss"
         }
       },
       "root": "",
@@ -24,23 +17,34 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/readora",
+            "outputPath": {
+              "base": "dist/jakes"
+            },
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public" 
+                "input": "./node_modules/@spartacus/smartedit/assets",
+                "output": "assets/"
               }
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss"
+              "src/styles/spartacus/user.scss",
+              "src/styles/spartacus/cart.scss",
+              "src/styles/spartacus/order.scss",
+              "src/styles/spartacus/checkout.scss",
+              "src/styles/spartacus/organization.scss",
+              "src/styles/spartacus/storefinder.scss",
+              "src/styles/spartacus/product.scss",
+              "src/styles/spartacus/asm.scss"
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
@@ -52,20 +56,21 @@
                   "import"
                 ]
               }
-            }
+            },
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "3.5mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -73,7 +78,8 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -82,16 +88,19 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "readora:build:production"
+              "buildTarget": "jakes:build:production"
             },
             "development": {
-              "buildTarget": "readora:build:development"
+              "buildTarget": "jakes:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "jakes:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -103,25 +112,30 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "./node_modules/@spartacus/smartedit/assets",
+                "output": "assets/"
               }
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss"
+              "src/styles/spartacus/user.scss",
+              "src/styles/spartacus/cart.scss",
+              "src/styles/spartacus/order.scss",
+              "src/styles/spartacus/checkout.scss",
+              "src/styles/spartacus/organization.scss",
+              "src/styles/spartacus/storefinder.scss",
+              "src/styles/spartacus/product.scss",
+              "src/styles/spartacus/asm.scss"
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/"
-              ],
-              "sass": {
-                "silenceDeprecations": [
-                  "import"
-                ]
-              }
+              ]
             }
           }
         }
