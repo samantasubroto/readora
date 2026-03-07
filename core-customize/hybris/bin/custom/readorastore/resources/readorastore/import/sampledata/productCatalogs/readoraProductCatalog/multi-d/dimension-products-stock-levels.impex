@@ -4,8 +4,8 @@
 # ImpEx for Importing Products stock levels into Jakes Store
 
 # Macros / Replacement Parameter definitions
-$productCatalog=jakesProductCatalog
-$productCatalogName=Jakes Product Catalog
+$productCatalog=readoraProductCatalog
+$productCatalogName=Readora Product Catalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
 
@@ -926,7 +926,7 @@ INSERT_UPDATE StockLevel ; productCode[unique=true] ; warehouse(code)[unique=tru
 						 ; 321654DD_60              ;bc_warehouse_s                                ; 510                               ; notSpecified
 
 
-UPDATE Product           ; code[unique=true]        ; stockLevels(productCode,warehouse(code))     ; vendors(code)[default=jakes] ; $catalogVersion
+UPDATE Product           ; code[unique=true]        ; stockLevels(productCode,warehouse(code))     ; vendors(code)[default=readora] ; $catalogVersion
                          ; 26002000_1               ; 26002000_1:bc_warehouse_s
                          ; 26002000_2               ; 26002000_2:bc_warehouse_e
                          ; 26002000_3               ; 26002000_3:bc_warehouse_n

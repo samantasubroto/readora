@@ -1,4 +1,4 @@
-package com.readora.store.service.dataimport.impl;
+package com.readora.readorastore.service.dataimport.impl;
 
 import de.hybris.platform.commerceservices.dataimport.impl.SampleDataImportService;
 import de.hybris.platform.core.initialization.SystemSetupContext;

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.readora.store;
+package com.readora.readorastore;
 
 import de.hybris.platform.core.Registry;
 import de.hybris.platform.jalo.JaloSession;

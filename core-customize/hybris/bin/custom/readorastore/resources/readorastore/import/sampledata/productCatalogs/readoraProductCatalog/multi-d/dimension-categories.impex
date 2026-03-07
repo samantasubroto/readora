@@ -4,7 +4,7 @@
 #CATEGORIES
 
 # Macros / Replacement Parameter definitions
-$productCatalog=jakesProductCatalog
+$productCatalog=readoraProductCatalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $supercategories=source(code, $catalogVersion)[unique=true]
 $categories=target(code, $catalogVersion)[unique=true]

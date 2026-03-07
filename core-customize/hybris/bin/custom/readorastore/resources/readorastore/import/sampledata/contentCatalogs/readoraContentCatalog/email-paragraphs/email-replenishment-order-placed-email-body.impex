@@ -1,6 +1,6 @@
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
                                    ;;ReplenishmentOrderPlacedEmailBody;"
-## messageSource=classpath:/jakesstore/messages/email-replenishmentOrderPlaced_$lang.properties
+## messageSource=classpath:/readorastore/messages/email-replenishmentOrderPlaced_$lang.properties
 #macro( genHtmlBoldFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end

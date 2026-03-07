@@ -1,7 +1,7 @@
-package com.readora.store.service.impl;
+package com.readora.readorastore.setup;
 
-import com.readora.store.constants.ReadorastoreConstants;
-import com.readora.store.service.dataimport.impl.ReadoraSampleDataImportService;
+import com.readora.readorastore.constants.ReadorastoreConstants;
+import com.readora.readorastore.service.dataimport.impl.ReadoraSampleDataImportService;
 import de.hybris.platform.commerceservices.dataimport.impl.CoreDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
 import de.hybris.platform.commerceservices.setup.data.ImportData;

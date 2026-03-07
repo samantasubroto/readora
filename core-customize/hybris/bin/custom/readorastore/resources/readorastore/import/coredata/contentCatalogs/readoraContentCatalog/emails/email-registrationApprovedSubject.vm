@@ -1,2 +1,2 @@
-## messageSource=classpath:/jakesstore/messages/email-registrationApproved_$lang.properties
+## messageSource=classpath:/readorastore/messages/email-registrationApproved_$lang.properties
 ${ctx.messages.subject}

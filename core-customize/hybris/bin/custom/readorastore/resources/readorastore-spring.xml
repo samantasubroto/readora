@@ -13,7 +13,7 @@
     <!-- ============================= -->
 
     <bean id="readorastoreService"
-          class="com.readora.store.service.impl.DefaultReadorastoreService">
+          class="com.readora.readorastore.service.impl.DefaultReadorastoreService">
         <property name="modelService" ref="modelService"/>
         <property name="mediaService" ref="mediaService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
@@ -25,11 +25,11 @@
     <!-- ============================= -->
 
     <bean id="readoraCoreDataImportService"
-          class="com.readora.store.service.dataimport.impl.ReadoraCoreDataImportService"
+          class="com.readora.readorastore.service.dataimport.impl.ReadoraCoreDataImportService"
           parent="coreDataImportService"/>
 
     <bean id="readoraSampleDataImportService"
-          class="com.readora.store.service.dataimport.impl.ReadoraSampleDataImportService"
+          class="com.readora.readorastore.service.dataimport.impl.ReadoraSampleDataImportService"
           parent="sampleDataImportService"/>
 
 
@@ -38,7 +38,7 @@
     <!-- ============================= -->
 
     <bean id="readorastoreSystemSetup"
-          class="com.readora.store.service.impl.ReadorastoreSystemSetup"
+          class="com.readora.readorastore.setup.ReadorastoreSystemSetup"
           parent="abstractCoreSystemSetup">
         <property name="coreDataImportService" ref="readoraCoreDataImportService"/>
         <property name="readoraSampleDataImportService" ref="readoraSampleDataImportService"/>

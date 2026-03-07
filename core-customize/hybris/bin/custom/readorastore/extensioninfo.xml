@@ -7,6 +7,6 @@
         <requires-extension name="b2bacceleratorservices"/>
         <requires-extension name="readoracore"/>
         
-        <coremodule generated="true" manager="com.readora.store.jalo.ReadorastoreManager" packageroot="com.readora.store"/>
+        <coremodule generated="true" manager="com.readora.readorastore.jalo.ReadorastoreManager" packageroot="com.readora.readorastore"/>
     </extension>
 </extensioninfo>

@@ -11,16 +11,16 @@
 	<!--
 		Example Data POJO
 	
-	<bean class="com.readora.store.data.AbstractPojo" abstract="true">
+	<bean class="com.readora.readorastore.data.AbstractPojo" abstract="true">
 		<property name="id" type="String"/>
 		<property name="flag" type="boolean"/>
 	</bean>
 
-	<bean class="com.readora.store.data.MyPojo" extends="com.readora.store.data.AbstractPojo">
+	<bean class="com.readora.readorastore.data.MyPojo" extends="com.readora.readorastore.data.AbstractPojo">
 		<property name="message" type="String"/>
 	</bean>
 
-	<bean class="com.readora.store.data.AnnotatedPojo">
+	<bean class="com.readora.readorastore.data.AnnotatedPojo">
 
 		<import type="javax.xml.bind.annotation.XmlRootElement"/>
 		<import type="javax.xml.bind.annotation.XmlElements"/>

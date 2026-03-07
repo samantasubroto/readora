@@ -2,7 +2,7 @@
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
 # vim:encoding=utf-8
-$productCatalog=jakesProductCatalog
+$productCatalog=readoraProductCatalog
 $productVersion=Staged
 $catalogVersion=catalogVersion(catalog(id[default=$productCatalog]),version[default=$productVersion])[unique=true,default=$productCatalog:$productVersion]
 $picture=picture(code, $catalogVersion)
@@ -12,7 +12,7 @@ $normal=normal(code, $catalogVersion)
 $others=others(code, $catalogVersion)
 $medias=medias(code, $catalogVersion)
 $galleryImages=galleryImages(qualifier, $catalogVersion)
-$siteResource=jar:com.jakes.jakesstore.constants.JakesstoreConstants&/jakesstore/import/sampledata/productCatalogs/$productCatalog/images
+$siteResource=jar:com.readora.readorastore.constants.ReadorastoreConstants&/readorastore/import/sampledata/productCatalogs/$productCatalog/images
 
 #Create Media
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)[default=images]
