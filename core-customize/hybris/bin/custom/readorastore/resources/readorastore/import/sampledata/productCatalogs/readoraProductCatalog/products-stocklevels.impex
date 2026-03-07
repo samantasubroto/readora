@@ -7,13 +7,13 @@
 $productCatalog=readoraProductCatalog
 $productCatalogName=Readora Product Catalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$vendor=jakes
+$vendor=readora
 
 INSERT_UPDATE Warehouse;code[unique=true];name[lang=en]
-;bc_warehouse_s;Jakes Warehouse South
-;bc_warehouse_e;Jakes Warehouse East
-;bc_warehouse_w;Jakes Warehouse West
-;bc_warehouse_n;Jakes Warehouse North
+;bc_warehouse_s;Readora Warehouse South
+;bc_warehouse_e;Readora Warehouse East
+;bc_warehouse_w;Readora Warehouse West
+;bc_warehouse_n;Readora Warehouse North
 
 INSERT_UPDATE StockLevel;productCode[unique=true];warehouse(code)[unique=true,default=default];available;inStockStatus(code);maxPreOrder[default=1];maxStockLevelHistoryCount[default=-1];overSelling[default=0];preOrder[default=0];reserved[default=0]
 ;637227;bc_warehouse_s;414;notSpecified

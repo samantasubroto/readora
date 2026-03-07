@@ -7,7 +7,7 @@
 $lang=en
 
 # Macros / Replacement Parameter definitions
-$productCatalog=jakesProductCatalog
+$productCatalog=readoraProductCatalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
 # Localized Category Names

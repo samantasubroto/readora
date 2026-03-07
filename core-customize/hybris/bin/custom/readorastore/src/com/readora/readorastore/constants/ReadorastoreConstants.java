@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.readora.store.constants;
+package com.readora.readorastore.constants;
 
 /**
  * Global class for all Readorastore constants. You can add global constants for your extension into this class.

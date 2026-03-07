@@ -4,7 +4,7 @@
 # ImpEx for Importing Units into Jakes Store
 
 # Macros / Replacement Parameter definitions
-$systemVersion=systemVersion(catalog(id[default='JakesClassification']),version[default='1.0'])
+$systemVersion=systemVersion(catalog(id[default='ReadoraClassification']),version[default='1.0'])
 
 INSERT_UPDATE ClassificationAttributeUnit;code[unique=true];symbol;unitType;name[lang=en];;;$systemVersion[unique=true]
  ;127;lbs;127;pounds;livres;lbs

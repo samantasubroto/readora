@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.readora.store.service.impl;
+package com.readora.readorastore.service.impl;
 
 import de.hybris.platform.catalog.model.CatalogUnawareMediaModel;
 import de.hybris.platform.core.model.media.MediaModel;
@@ -17,7 +17,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.readora.store.service.ReadorastoreService;
+import com.readora.readorastore.service.ReadorastoreService;
 
 
 public class DefaultReadorastoreService implements ReadorastoreService

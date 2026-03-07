@@ -6,7 +6,7 @@
 # Macros / Replacement Parameter definitions
 $productCatalog=readoraProductCatalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$siteResource=jar:com.readora.store.constants.ReadoraStoreConstants&/readorastore/import/sampledata/readoraProductCatalog/$productCatalog
+$siteResource=jar:com.readora.readorastore.constants.ReadorastoreConstants&/readorastore/import/sampledata/productCatalogs/$productCatalog
 $thumbnail=thumbnail(code, $catalogVersion)
 $picture=picture(code, $catalogVersion)
 $thumbnails=thumbnails(code, $catalogVersion)
