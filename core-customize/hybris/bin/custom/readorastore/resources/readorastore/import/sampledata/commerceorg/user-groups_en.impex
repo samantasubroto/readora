@@ -23,10 +23,10 @@ UPDATE B2BCostCenter;code[unique=true];name[lang=$lang]
  ;Services_West;Services West
 
 UPDATE B2BBudget;code[unique=true];name[lang=$lang]
- ;20K_USD_MONTH;20K USD/MONTH;
- ;30K_USD_MONTH;30K USD/MONTH;
- ;Monthly_20K_USD;Monthly 20K USD
- ;Monthly_2_5K_USD;Monthly 2.5K USD
- ;Monthly_4K_USD;Monthly 4K USD
- ;Monthly_50K_USD;Monthly 50K USD
- ;Weekly_2_5K_USD;Weekly 2.5K USD
+                ;1660K_INR_MONTH;16.6L INR/MONTH;
+                ;2490K_INR_MONTH;24.9L INR/MONTH;
+                ;Monthly_1660K_INR;Monthly 16.6L INR
+                ;Monthly_207K_INR;Monthly 2.07L INR
+                ;Monthly_332K_INR;Monthly 3.32L INR
+                ;Monthly_4150K_INR;Monthly 41.5L INR
+                ;Weekly_207K_INR;Weekly 2.07L INR

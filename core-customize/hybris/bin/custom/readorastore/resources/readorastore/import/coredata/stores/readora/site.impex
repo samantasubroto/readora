@@ -33,5 +33,11 @@ INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;ye
                      ;$siteUid-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1
                      ;$siteUid-UncollectedOrdersJob;0;0;6;-1;-1;-1;true;false;-1
 
+INSERT_UPDATE Currency; isocode[unique=true]; name[lang=en]; active; base; conversion; digits; symbol
+                      ; INR                 ; Indian Rupee ; true  ; true; 1          ; 2      ; ₹
+
+INSERT_UPDATE BaseStore; uid[unique=true]; currencies(isocode); defaultCurrency(isocode)
+                       ; readora         ; INR                ; INR
+
 INSERT_UPDATE OAuthClientDetails; clientId[unique=true]      ;public ;authorities ;scope ;authorizedGrantTypes             ;registeredRedirectUri ;loginPageUri
-                                ; mobile_android_public      ;true   ;ROLE_CLIENT ;basic ;authorization_code,refresh_token ;http://localhost:4200 ;http://localhost:4200/login
+                                ; mobile_android_public      ;true   ;ROLE_CLIENT ;basic ;authorization_code,refresh_token ;http://localhost:4200 ;
