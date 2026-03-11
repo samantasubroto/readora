@@ -22,7 +22,7 @@ import { defaultCmsContentProviders, layoutConfigFactory, mediaConfig } from "@s
       context: {
         urlParameters: ['baseSite', 'language', 'currency'],
         baseSite: ['readora'],
-        currency: ['USD']
+        currency: ['INR']
       },
     }),
     provideConfig(<I18nConfig>{

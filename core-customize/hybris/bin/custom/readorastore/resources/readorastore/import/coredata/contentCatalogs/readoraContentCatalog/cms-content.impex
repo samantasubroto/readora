@@ -1066,5 +1066,5 @@ INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;fronten
 "
 
 # Public OAuth Client Credential
-INSERT_UPDATE OAuthClientDetails; clientId[unique=true]      ;public ;authorities ;scope ;authorizedGrantTypes             ;registeredRedirectUri ;loginPageUri
-                                ; mobile_android_public      ;true   ;ROLE_CLIENT ;basic ;authorization_code,refresh_token ;http://localhost:4200 ;http://localhost:4200/login
+INSERT_UPDATE OAuthClientDetails; clientId[unique=true]      ;public ;authorities ;scope ;authorizedGrantTypes             ;registeredRedirectUri
+                                ; mobile_android_public      ;true   ;ROLE_CLIENT ;basic ;authorization_code,refresh_token ;http://localhost:4200
