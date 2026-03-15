@@ -82,5 +82,15 @@
         <property name="mediaService" ref="mediaService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
+
+    <alias name="defaultProductCompareFacade" alias="productCompareFacade"/>
+    <bean id="defaultProductCompareFacade"
+          class="com.readora.facades.productcompare.impl.DefaultProductCompareFacade">
+        <property name="productService" ref="productService"/>
+        <property name="b2bCustomerService" ref="b2bCustomerService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="productConverter" ref="productConverter"/>
+        <property name="productCompareService" ref="productCompareService"/>
+    </bean>
 			
 </beans>

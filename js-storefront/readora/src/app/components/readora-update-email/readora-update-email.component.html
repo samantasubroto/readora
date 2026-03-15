@@ -1,0 +1,27 @@
+<ng-container *ngIf="!(loading$ | async); else loading">
+  <ng-container *ngIf="(products$ | async) as products">
+    <table *ngIf="products.length > 0">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th *ngFor="let product of products">
+            {{ product.name }}
+            <button (click)="removeProduct(product.code!)">Remove</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let key of (attributeKeys$ | async)">
+          <td><strong>{{ key }}</strong></td>
+          <td *ngFor="let product of products">
+            {{ getProductValue(product, key) ?? '-' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="products.length === 0">No products to compare.</p>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  <cx-spinner></cx-spinner>
+</ng-template>
