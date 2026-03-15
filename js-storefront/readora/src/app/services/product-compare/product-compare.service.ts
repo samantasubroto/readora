@@ -27,6 +27,7 @@ export class ProductCompareService {
   }
 
   removeProduct(productCode: string): Observable<ProductCompareList> {
+    console.log(productCode);
     return this.userIdService.takeUserId(true).pipe(
       switchMap((userId) => this.productCompareConnector.removeProduct(userId, productCode))
     );

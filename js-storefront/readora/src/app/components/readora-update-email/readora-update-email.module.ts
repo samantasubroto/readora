@@ -4,8 +4,17 @@ import { ReadoraUpdateEmailComponent } from './readora-update-email.component';
 import { CardModule, SpinnerModule } from '@spartacus/storefront';
 import { AddressBookComponent, AddressFormModule } from '@spartacus/user/profile/components';
 import { AuthGuard, CmsConfig, FeaturesConfigModule, I18nModule, provideConfig, provideDefaultConfig, UserAddressService } from '@spartacus/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { PRODUCT_COMPARE_FEATURE_KEY, ProductCompareEffects, productCompareReducer } from '../../store/product-compare';
 
 @NgModule({
+  declarations: [
+    ReadoraUpdateEmailComponent,
+  ],
+  exports: [
+    ReadoraUpdateEmailComponent,
+  ],
   imports: [
     CommonModule,
     CardModule,
@@ -13,10 +22,11 @@ import { AuthGuard, CmsConfig, FeaturesConfigModule, I18nModule, provideConfig, 
     SpinnerModule,
     I18nModule,
     FeaturesConfigModule,
+    StoreModule.forFeature(PRODUCT_COMPARE_FEATURE_KEY, productCompareReducer),
+    EffectsModule.forFeature([ProductCompareEffects]),
   ],
-  declarations: [ReadoraUpdateEmailComponent],
-  exports: [ReadoraUpdateEmailComponent],
   providers: [
+    UserAddressService,
     provideConfig(<CmsConfig>{
       cmsComponents: {
         AccountAddressBookComponent: {
@@ -25,7 +35,6 @@ import { AuthGuard, CmsConfig, FeaturesConfigModule, I18nModule, provideConfig, 
         },
       },
     }),
-    UserAddressService,
   ],
 })
-export class ReadoraUpdateEmailModule { }
+export class ReadoraUpdateEmailModule {}

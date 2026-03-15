@@ -12,7 +12,7 @@ export class ProductCompareOccAdapter implements ProductCompareAdapter {
   constructor(
     protected http: HttpClient,
     protected occEndpoints: OccEndpointsService
-  ) {}
+  ) { }
 
   getCompareProducts(userId: string): Observable<ProductCompareList> {
     const url = this.occEndpoints.buildUrl('compareProducts', { urlParams: { userId } });
@@ -20,12 +20,14 @@ export class ProductCompareOccAdapter implements ProductCompareAdapter {
   }
 
   addProduct(userId: string, productCode: string): Observable<ProductCompareList> {
-    const url = this.occEndpoints.buildUrl('addCompareProduct', { urlParams: { userId, productCode } });
+    const url = this.occEndpoints.buildUrl('addCompareProduct', { urlParams: { userId, code: productCode } });
     return this.http.post<ProductCompareList>(url, {});
   }
 
   removeProduct(userId: string, productCode: string): Observable<ProductCompareList> {
-    const url = this.occEndpoints.buildUrl('removeCompareProduct', { urlParams: { userId, productCode } });
+    const url = this.occEndpoints.buildUrl('removeCompareProduct', {
+      urlParams: { userId, code: productCode }
+    });
     return this.http.delete<ProductCompareList>(url);
   }
 }
