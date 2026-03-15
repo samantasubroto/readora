@@ -82,5 +82,16 @@
         <property name="mediaService" ref="mediaService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
-			
+
+    <alias name="defaultProductCompareDao" alias="productCompareDao"/>
+    <bean id="defaultProductCompareDao"
+          class="com.readora.core.productcompare.dao.impl.DefaultProductCompareDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <alias name="defaultProductCompareService" alias="productCompareService"/>
+    <bean id="defaultProductCompareService"
+          class="com.readora.core.productcompare.service.impl.DefaultProductCompareService">
+        <property name="productCompareDao" ref="defaultProductCompareDao"/>
+    </bean>
 </beans>

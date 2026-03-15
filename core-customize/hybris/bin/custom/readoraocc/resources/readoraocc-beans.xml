@@ -8,13 +8,18 @@
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	<!--
-		Example Data POJO
-	
-	<bean class="yemptypackage.data.MyPojo">
-		<property name="id" type="String"/>
-		<property name="flag" type="boolean"/>
+	<bean class="com.readora.occ.dto.productcompare.ProductCompareWsDTO">
+		<description>Representation of a Product Compare List</description>
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">ProductCompare</hint>
+		</hints>
+		<property name="products"
+				  type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>">
+			<description>Products in comparison</description>
+		</property>
+		<property name="totalCount" type="Integer">
+			<description>Total number of products being compared</description>
+		</property>
 	</bean>
-	-->
-
 </beans>
