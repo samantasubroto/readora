@@ -15,4 +15,9 @@
 
     <context:annotation-config/>
 
+	<alias name="readoraB2BPlaceOrderCartValidator" alias="b2BPlaceOrderCartValidator"/>
+	<bean id="readoraB2BPlaceOrderCartValidator"
+		  class="com.readora.occ.validator.ReadoraB2BPlaceOrderCartValidator">
+	</bean>
+
 </beans>

@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { ReadoraOccModule } from './occ';
 import { ReadoraUpdateEmailModule } from './components';
+import { provideConfig } from '@spartacus/core';
+import { readoraCheckoutConfig } from './config/readora-checkout-config';
+import { readoraTranslationChunksConfig, readoraTranslationsEn } from '../../public/translations';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,19 @@ import { ReadoraUpdateEmailModule } from './components';
     BaseStorefrontModule,
     ReadoraUpdateEmailModule
   ],
-  providers: [provideHttpClient(withFetch(), withInterceptorsFromDi()), provideHttpClient(withFetch(), withInterceptorsFromDi())],
+  providers: [
+    provideHttpClient(withFetch(), 
+    withInterceptorsFromDi()), 
+    provideHttpClient(withFetch(), 
+    withInterceptorsFromDi()),
+    provideConfig(readoraCheckoutConfig),
+    provideConfig({
+      i18n: {
+        resources: { en: readoraTranslationsEn },
+        chunks: readoraTranslationChunksConfig,
+      }
+    }),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
