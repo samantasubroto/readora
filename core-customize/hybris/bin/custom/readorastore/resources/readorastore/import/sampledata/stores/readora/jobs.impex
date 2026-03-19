@@ -1,0 +1,11 @@
+# Step 1 — register the Spring job performable
+INSERT_UPDATE ServicelayerJob; springId[unique=true]      ; code
+                             ; abandonedCartJobPerformable ; abandonedCartJob
+
+# Step 2 — create the CronJob that uses the ServicelayerJob
+INSERT_UPDATE CronJob; code[unique=true]  ; job(code)        ; sessionLanguage(isocode)
+                     ; abandonedCartJob   ; abandonedCartJob  ; en
+
+# Step 3 — create the Trigger that schedules the CronJob
+INSERT_UPDATE Trigger; cronJob(code)[unique=true] ; second ; minute ; hour ; day ; month ; year ; relative ; active ; maxAcceptableDelay
+                     ; abandonedCartJob            ; 0      ; 2      ; 0    ; -1  ; -1    ; -1   ; false    ; true   ; -1

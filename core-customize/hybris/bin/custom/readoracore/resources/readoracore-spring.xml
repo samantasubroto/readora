@@ -94,4 +94,21 @@
           class="com.readora.core.productcompare.service.impl.DefaultProductCompareService">
         <property name="productCompareDao" ref="defaultProductCompareDao"/>
     </bean>
+
+    <bean id="readoraRestTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+    <alias name="defaultWhatsAppNotificationService" alias="whatsAppNotificationService"/>
+    <bean id="defaultWhatsAppNotificationService"
+          class="com.readora.core.whatsappnotification.impl.DefaultWhatsAppNotificationService">
+        <property name="modelService" ref="modelService"/>
+        <property name="restTemplate" ref="readoraRestTemplate"/>
+        <property name="apiToken" value="${whatsapp.api.token}"/>
+        <property name="phoneNumberId" value="${whatsapp.phone.number.id}"/>
+    </bean>
+
+    <bean id="abandonedCartJobPerformable"
+          class="com.readora.core.jobs.AbandonedCartJobPerformable">
+        <property name="whatsAppNotificationService" ref="whatsAppNotificationService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
 </beans>
