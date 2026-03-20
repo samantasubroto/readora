@@ -11,5 +11,22 @@
            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.readora.occ.controllers"/>
+    <context:component-scan base-package="com.readora.occ"/>
 
+    <bean parent="fieldSetLevelMapping">
+        <property name="dtoClass" value="com.readora.occ.dto.productcompare.ProductCompareWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC"   value="products(BASIC),totalCount"/>
+                <entry key="DEFAULT" value="products(DEFAULT),totalCount"/>
+                <entry key="FULL"    value="products(FULL),totalCount"/>
+            </map>
+        </property>
+    </bean>
+
+    <alias name="readoraB2BPlaceOrderCartValidator" alias="b2BPlaceOrderCartValidator"/>
+    <bean id="readoraB2BPlaceOrderCartValidator"
+          class="com.readora.occ.validator.ReadoraB2BPlaceOrderCartValidator"
+          parent="defaultB2BPlaceOrderCartValidator">
+    </bean>
 </beans>
