@@ -26,15 +26,15 @@ import { PRODUCT_COMPARE_FEATURE_KEY, ProductCompareEffects, productCompareReduc
     EffectsModule.forFeature([ProductCompareEffects]),
   ],
   providers: [
-    UserAddressService,
-    provideConfig(<CmsConfig>{
-      cmsComponents: {
-        AccountAddressBookComponent: {
-          component: ReadoraUpdateEmailComponent,
-          guards: [AuthGuard],
-        },
-      },
-    }),
+    // UserAddressService,
+    // provideConfig(<CmsConfig>{
+    //   cmsComponents: {
+    //     AccountAddressBookComponent: {
+    //       component: ReadoraUpdateEmailComponent,
+    //       guards: [AuthGuard],
+    //     },
+    //   },
+    // }),
   ],
 })
 export class ReadoraUpdateEmailModule {}
