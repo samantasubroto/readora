@@ -22,4 +22,14 @@
 			<description>Total number of products being compared</description>
 		</property>
 	</bean>
+
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.order.OrderWsDTO">
+		<property name="paymentId" type="String"/>
+	</bean>
+
+	<bean class="com.readora.occ.dto.payment.RazorpayInitiateWsDTO">
+		<property name="razorpayOrderId" type="String"/>
+		<property name="amount" type="Double"/>
+		<property name="currency" type="String"/>
+	</bean>
 </beans>

@@ -29,4 +29,16 @@
           class="com.readora.occ.validator.ReadoraB2BPlaceOrderCartValidator"
           parent="defaultB2BPlaceOrderCartValidator">
     </bean>
+
+    <bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.readora.occ.dto.payment.RazorpayInitiateWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC"   value="razorpayOrderId,amount,currency"/>
+                <entry key="DEFAULT" value="razorpayOrderId,amount,currency"/>
+                <entry key="FULL"    value="razorpayOrderId,amount,currency"/>
+            </map>
+        </property>
+    </bean>
 </beans>

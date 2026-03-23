@@ -111,4 +111,12 @@
         <property name="whatsAppNotificationService" ref="whatsAppNotificationService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
+
+    <alias name="defaultRazorpayPaymentService" alias="razorpayPaymentService"/>
+    <bean id="defaultRazorpayPaymentService"
+          class="com.readora.core.payment.impl.DefaultRazorpayPaymentService">
+        <property name="keyId" value="${razorpay.key.id}"/>
+        <property name="keySecret" value="${razorpay.key.secret}"/>
+        <property name="restTemplate" ref="readoraRestTemplate"/>
+    </bean>
 </beans>

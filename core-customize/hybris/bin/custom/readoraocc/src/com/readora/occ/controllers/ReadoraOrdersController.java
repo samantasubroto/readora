@@ -61,8 +61,6 @@ public class ReadoraOrdersController extends B2BOrdersController {
         validateCart(cartData);
         validateAndAuthorizePayment(cartData);
 
-        return getDataMapper().map(
-                readoraB2BCheckoutFacade.placeOrder(new PlaceOrderData()),
-                OrderWsDTO.class, fields);
+        return getDataMapper().map(readoraB2BCheckoutFacade.placeOrder(new PlaceOrderData()), OrderWsDTO.class, fields);
     }
 }

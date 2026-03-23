@@ -5,5 +5,6 @@ declare module '@spartacus/core' {
     compareProducts?: string | OccEndpoint;
     addCompareProduct?: string | OccEndpoint
     removeCompareProduct?: string | OccEndpoint;
+    initiatePayment?: string | OccEndpoint;
   }
 }

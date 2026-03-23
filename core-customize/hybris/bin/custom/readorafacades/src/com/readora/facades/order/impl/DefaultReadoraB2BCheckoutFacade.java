@@ -1,5 +1,7 @@
 package com.readora.facades.order.impl;
 
+import com.readora.core.payment.RazorpayPaymentService;
+import com.readora.core.payment.ReadoraOrderData;
 import com.readora.facades.order.ReadoraB2BCheckoutFacade;
 import de.hybris.platform.b2b.enums.CheckoutPaymentType;
 import de.hybris.platform.b2bacceleratorfacades.checkout.data.PlaceOrderData;
@@ -7,6 +9,7 @@ import de.hybris.platform.b2bacceleratorfacades.exception.EntityValidationExcept
 import de.hybris.platform.b2bacceleratorfacades.order.impl.DefaultB2BAcceleratorCheckoutFacade;
 import de.hybris.platform.commercefacades.order.data.AbstractOrderData;
 import de.hybris.platform.commercefacades.order.data.CartData;
+import de.hybris.platform.commercefacades.order.data.OrderData;
 import de.hybris.platform.commercefacades.user.UserFacade;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.order.payment.SAPGenericPaymentInfoModel;
@@ -20,6 +23,8 @@ public class DefaultReadoraB2BCheckoutFacade extends DefaultB2BAcceleratorChecko
     private static final String CART_CHECKOUT_NOT_CALCULATED = "cart.not.calculated";
 
     private UserFacade userFacade;
+    private RazorpayPaymentService razorpayPaymentService;
+    private String razorpayCurrency;
 
     @Override
     public CartData updateCheckoutCart(final CartData cartData) {
@@ -78,5 +83,21 @@ public class DefaultReadoraB2BCheckoutFacade extends DefaultB2BAcceleratorChecko
 
     public void setUserFacade(UserFacade userFacade) {
         this.userFacade = userFacade;
+    }
+
+    public RazorpayPaymentService getRazorpayPaymentService() {
+        return razorpayPaymentService;
+    }
+
+    public void setRazorpayPaymentService(RazorpayPaymentService razorpayPaymentService) {
+        this.razorpayPaymentService = razorpayPaymentService;
+    }
+
+    public String getRazorpayCurrency() {
+        return razorpayCurrency;
+    }
+
+    public void setRazorpayCurrency(String razorpayCurrency) {
+        this.razorpayCurrency = razorpayCurrency;
     }
 }
