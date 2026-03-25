@@ -8,7 +8,7 @@ export const readoraOccConfig: OccConfig = {
         addCompareProduct: 'users/${userId}/productcompare/${code}',
         removeCompareProduct: 'users/${userId}/productcompare/${code}',
         placeOrder: 'readoraOrgUsers/${userId}/orders?fields=FULL',
-        initiatePayment: 'readoraOrgUsers/${userId}/payment/initiate'
+        initiatePayment: 'users/${userId}/payment/initiate'
       }
     },
   }

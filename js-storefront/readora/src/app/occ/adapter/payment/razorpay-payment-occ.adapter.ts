@@ -13,11 +13,12 @@ export class RazorpayPaymentOccAdapter implements RazorpayPaymentAdapter {
   constructor(
     protected http: HttpClient,
     protected occEndpoints: OccEndpointsService
-  ) {}
+  ) { }
 
-  initiatePayment(userId: string): Observable<RazorpayInitiateResponse> {
+  initiatePayment(userId: string, cartId: string): Observable<RazorpayInitiateResponse> {
     const url = this.occEndpoints.buildUrl('initiatePayment', {
-      urlParams: { userId }
+      urlParams: { userId },
+      queryParams: { cartId }
     });
     return this.http.post<RazorpayInitiateResponse>(url, {});
   }

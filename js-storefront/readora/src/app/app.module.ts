@@ -8,7 +8,7 @@ import { AppRoutingModule, BaseStorefrontModule, StorefrontComponentModule } fro
 import { AppComponent } from './app.component';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { ReadoraOccModule } from './occ';
-import { ReadoraUpdateEmailModule } from './components';
+import { ReadoraPlaceOrderModule, ReadoraUpdateEmailModule } from './components';
 import { provideConfig } from '@spartacus/core';
 import { readoraCheckoutConfig } from './config/readora-checkout-config';
 import { readoraTranslationChunksConfig, readoraTranslationsEn } from '../../public/translations';
@@ -25,7 +25,8 @@ import { readoraTranslationChunksConfig, readoraTranslationsEn } from '../../pub
     SpartacusModule,
     ReadoraOccModule,
     BaseStorefrontModule,
-    ReadoraUpdateEmailModule
+    ReadoraUpdateEmailModule,
+    ReadoraPlaceOrderModule
   ],
   providers: [
     provideHttpClient(withFetch(), 

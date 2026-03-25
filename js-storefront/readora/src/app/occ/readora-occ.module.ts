@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { provideConfig } from "@spartacus/core";
-import { ProductCompareAdapter } from "../connectors";
-import { ProductCompareOccAdapter } from "./adapter";
+import { ProductCompareAdapter, RazorpayPaymentAdapter } from "../connectors";
+import { ProductCompareOccAdapter, RazorpayPaymentOccAdapter } from "./adapter";
 import { readoraOccConfig } from "./config";
 
 @NgModule({
@@ -12,6 +12,10 @@ import { readoraOccConfig } from "./config";
     {
       provide: ProductCompareAdapter,
       useClass: ProductCompareOccAdapter,
+    },
+    {
+      provide: RazorpayPaymentAdapter,
+      useClass: RazorpayPaymentOccAdapter,
     },
   ],
 })
