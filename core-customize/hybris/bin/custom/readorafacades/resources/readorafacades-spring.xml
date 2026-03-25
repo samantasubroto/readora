@@ -36,5 +36,7 @@
           class="com.readora.facades.order.impl.DefaultReadoraB2BCheckoutFacade"
           parent="defaultB2BAcceleratorCheckoutFacade">
         <property name="userFacade" ref="userFacade"/>
+        <property name="razorpayPaymentService" ref="razorpayPaymentService"/>
+        <property name="razorpayCurrency" value="${razorpay.currency}"/>
     </bean>
 </beans>
