@@ -1,13 +1,14 @@
-import { ChangeDetectionStrategy, Component, ComponentRef, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
-import { RoutingService, User } from '@spartacus/core';
-import { OrderFacade } from '@spartacus/order/root';
-import { LaunchDialogService, LAUNCH_CALLER } from '@spartacus/storefront';
-import { filter, switchMap } from 'rxjs/operators';
 import { CheckoutPlaceOrderComponent } from '@spartacus/checkout/base/components';
-import { RazorpayPaymentService } from '../../../services';
-import { RazorpayPaymentResponse } from '../../../model';
+import { GlobalMessageService, RoutingService, User } from '@spartacus/core';
+import { OrderFacade } from '@spartacus/order/root';
+import { LAUNCH_CALLER, LaunchDialogService } from '@spartacus/storefront';
 import { UserAccountFacade } from '@spartacus/user/account/root';
+import { throwError } from 'rxjs';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
+import { RazorpayInitiateResponse, RazorpayPaymentResponse } from '../../../model';
+import { RazorpayPaymentService } from '../../../services';
 
 @Component({
   selector: 'cx-place-order',
@@ -25,6 +26,7 @@ export class ReadoraPlaceOrderComponent extends CheckoutPlaceOrderComponent impl
     protected override vcr: ViewContainerRef,
     protected razorpayPaymentService: RazorpayPaymentService,
     protected userAccountFacade: UserAccountFacade,
+    protected globalMessageService: GlobalMessageService,
   ) {
     super(orderFacade, routingService, fb, launchDialogService, vcr);
   }
@@ -37,14 +39,11 @@ export class ReadoraPlaceOrderComponent extends CheckoutPlaceOrderComponent impl
         this.vcr
       );
 
-      // Step 1 — initiate Razorpay payment
       this.razorpayPaymentService.initiatePayment().pipe(
-
-        // Step 2 — open Razorpay widget
-        switchMap((initiateResponse) =>
+        switchMap((initiateResponse: RazorpayInitiateResponse) =>
           this.userAccountFacade.get().pipe(
             filter((user): user is User => !!user),
-            switchMap((user : User) =>
+            switchMap((user: User) =>
               this.razorpayPaymentService.openCheckout(
                 initiateResponse.razorpayOrderId,
                 initiateResponse.amount,
@@ -52,23 +51,35 @@ export class ReadoraPlaceOrderComponent extends CheckoutPlaceOrderComponent impl
                 user?.name ?? '',
                 user?.uid ?? ''
               )
-            )
-          )
+            ),
+            map((paymentResponse: RazorpayPaymentResponse) => ({
+              paymentResponse,
+              initiateResponse
+            }))
+          ),
         ),
 
-        // Step 3 — payment done, place SAP order
-        switchMap((_paymentResponse: RazorpayPaymentResponse) =>
-          this.orderFacade.placeOrder(this.checkoutSubmitForm.valid)
+        switchMap(({ paymentResponse, initiateResponse }) =>
+          this.orderFacade.placeOrder(this.checkoutSubmitForm.valid).pipe(
+            catchError((err) => {
+              //Modal to handle order failed case to let user know that refund is processed.
+              return this.razorpayPaymentService.initiateRefund(
+                paymentResponse.razorpay_payment_id,
+                initiateResponse.amount
+              ).pipe(
+                switchMap(() => throwError(() => ({
+                  type: 'ORDER_FAILED_REFUND_INITIATED'
+                })))
+              );
+            })
+          )
         )
-
       ).subscribe({
         next: () => this.onSuccess(),
         error: (err) => {
-          console.error('Payment failed:', err);
           this.dismissSpinner();
         }
       });
-
     } else {
       this.checkoutSubmitForm.markAllAsTouched();
     }

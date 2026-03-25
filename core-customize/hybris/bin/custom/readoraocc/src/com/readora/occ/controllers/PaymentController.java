@@ -8,7 +8,6 @@ import de.hybris.platform.b2bocc.v2.controllers.BaseController;
 import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercewebservicescommons.strategies.CartLoaderStrategy;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
-import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Payment")
 public class PaymentController extends BaseController {
 
-    private static final String RAZOR_PAY_CURRENCY = "INR" ;
+    private static final String RAZOR_PAY_CURRENCY = "INR";
 
     @Resource(name = "razorpayPaymentService")
     private RazorpayPaymentService razorpayPaymentService;
@@ -53,5 +52,16 @@ public class PaymentController extends BaseController {
         response.setAmount(cart.getTotalPrice().getValue().doubleValue());
         response.setCurrency(RAZOR_PAY_CURRENCY);
         return response;
+    }
+
+    @Secured({SecuredAccessConstants.ROLE_CUSTOMERGROUP, SecuredAccessConstants.ROLE_TRUSTED_CLIENT, SecuredAccessConstants.ROLE_CUSTOMERMANAGERGROUP})
+    @Operation(description = "Initiate refund for a payment")
+    @PostMapping(value = "/refund")
+    @ResponseBody
+    @ApiBaseSiteIdAndUserIdParam
+    public void initiateRefund(
+            @RequestParam final String paymentId,
+            @RequestParam final Double amount) {
+        razorpayPaymentService.initiateRefund(paymentId, amount);
     }
 }

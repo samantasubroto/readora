@@ -27,38 +27,46 @@ export class RazorpayPaymentService {
     );
   }
 
-  openCheckout(
-    razorpayOrderId: string,
-    amount: number,
-    currency: string,
-    customerName: string,
-    customerEmail: string
-  ): Observable<RazorpayPaymentResponse> {
-    return new Observable((observer) => {
-      const options = {
-        key: 'rzp_test_STnJACYHT7pMil',
-        amount: amount * 100,
-        currency: currency,
-        order_id: razorpayOrderId,
-        name: 'Readora',
-        description: 'Order Payment',
-        prefill: {
-          name: customerName,
-          email: customerEmail,
-        },
-        handler: (response: RazorpayPaymentResponse) => {
-          observer.next(response);
-          observer.complete();
-        },
-        modal: {
-          ondismiss: () => {
-            observer.error('Payment cancelled by user');
+    openCheckout(
+      razorpayOrderId: string,
+      amount: number,
+      currency: string,
+      customerName: string,
+      customerEmail: string
+    ): Observable<RazorpayPaymentResponse> {
+      return new Observable((observer) => {
+        const options = {
+          key: 'rzp_test_STnJACYHT7pMil',
+          amount: amount * 100,
+          currency: currency,
+          order_id: razorpayOrderId,
+          name: 'Readora',
+          description: 'Order Payment',
+          prefill: {
+            name: customerName,
+            email: customerEmail,
+          },
+          handler: (response: RazorpayPaymentResponse) => {
+            observer.next(response);
+            observer.complete();
+          },
+          modal: {
+            ondismiss: () => {
+              observer.error('Payment cancelled by user');
+            }
           }
-        }
-      };
+        };
 
-      const rzp = new (window as any).Razorpay(options);
-      rzp.open();
-    });
+        const rzp = new (window as any).Razorpay(options);
+        rzp.open();
+      });
+    }
+
+  initiateRefund(paymentId: string, amount: number): Observable<any> {
+    return this.userIdService.takeUserId(true).pipe(
+      switchMap((userId) =>
+        this.razorpayPaymentConnector.initiateRefund(userId, paymentId, amount)
+      )
+    );
   }
 }

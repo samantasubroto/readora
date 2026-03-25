@@ -15,4 +15,8 @@ export class RazorpayPaymentConnector {
   initiatePayment(userId: string, cartId: string): Observable<RazorpayInitiateResponse> {
     return this.adapter.initiatePayment(userId, cartId);
   }
+
+  initiateRefund(userId: string, paymentId: string, amount: number): Observable<any> {
+    return this.adapter.initiateRefund(userId, paymentId, amount);
+  }
 }

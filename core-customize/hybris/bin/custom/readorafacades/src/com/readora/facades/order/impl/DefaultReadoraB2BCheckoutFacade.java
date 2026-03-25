@@ -54,7 +54,6 @@ public class DefaultReadoraB2BCheckoutFacade extends DefaultB2BAcceleratorChecko
         if (isValidCheckoutCart(placeOrderData)) {
             return (T) super.placeOrder();
         }
-
         return null;
     }
 

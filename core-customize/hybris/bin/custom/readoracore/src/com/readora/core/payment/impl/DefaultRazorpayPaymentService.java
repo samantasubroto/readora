@@ -20,6 +20,7 @@ public class DefaultRazorpayPaymentService implements RazorpayPaymentService {
 
     private static final Logger LOG = LoggerFactory.getLogger(DefaultRazorpayPaymentService.class);
     private static final String RAZORPAY_CREATE_ORDER_URL = "https://api.razorpay.com/v1/orders";
+    private static final String RAZORPAY_REFUND_URL = "https://api.razorpay.com/v1/payments/{paymentId}/refund";
 
     private String keyId;
     private String keySecret;
@@ -55,9 +56,7 @@ public class DefaultRazorpayPaymentService implements RazorpayPaymentService {
     }
 
     @Override
-    public boolean verifyPaymentSignature(final String razorpayOrderId,
-                                          final String razorpayPaymentId,
-                                          final String razorpaySignature) {
+    public boolean verifyPaymentSignature(final String razorpayOrderId, final String razorpayPaymentId, final String razorpaySignature) {
         try {
             final String payload = razorpayOrderId + "|" + razorpayPaymentId;
             final String generatedSignature = generateHmacSha256(payload, keySecret);
@@ -76,8 +75,32 @@ public class DefaultRazorpayPaymentService implements RazorpayPaymentService {
         }
     }
 
-    private String generateHmacSha256(final String data,
-                                      final String secret) throws Exception {
+    @Override
+    public void initiateRefund(final String paymentId, final Double amount) {
+        try {
+            final String auth = Base64.getEncoder().encodeToString((keyId + ":" + keySecret).getBytes(StandardCharsets.UTF_8));
+
+            final HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Authorization", "Basic " + auth);
+
+            final Map<String, Object> requestBody = new HashMap<>();
+            requestBody.put("amount", (int)(amount * 100));
+            requestBody.put("speed", "normal");
+            requestBody.put("notes", Map.of("reason", "Order placement failed"));
+
+            final HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
+            final String url = RAZORPAY_REFUND_URL.replace("{paymentId}", paymentId);
+            final ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
+
+            LOG.info("Refund initiated for payment: {} amount: {} response: {}", paymentId, amount, response.getBody());
+        } catch (final Exception e) {
+            LOG.error("Failed to initiate refund for payment: {}", paymentId, e);
+            throw new RuntimeException("Razorpay refund failed", e);
+        }
+    }
+
+    private String generateHmacSha256(final String data, final String secret) throws Exception {
         final Mac mac = Mac.getInstance("HmacSHA256");
         final SecretKeySpec secretKeySpec =
                 new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");

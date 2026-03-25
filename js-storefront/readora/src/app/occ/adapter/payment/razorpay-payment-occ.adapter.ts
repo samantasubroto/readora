@@ -22,4 +22,12 @@ export class RazorpayPaymentOccAdapter implements RazorpayPaymentAdapter {
     });
     return this.http.post<RazorpayInitiateResponse>(url, {});
   }
+
+  initiateRefund(userId: string, paymentId: string, amount: number): Observable<any> {
+    const url = this.occEndpoints.buildUrl('initiateRefund', {
+      urlParams: { userId },
+      queryParams: { paymentId, amount }
+    });
+    return this.http.post(url, {});
+  }
 }
